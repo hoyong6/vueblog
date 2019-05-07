@@ -36,7 +36,7 @@
     </section>
     <aside class="blog-aside">
       <nuxt-link to="/rss.xml" target="_blank"><i class="vueblog icon-rss"></i></nuxt-link>
-      <a href="https://github.com/wmui"><i class="vueblog icon-github"></i></a>
+      <a href=""><i class="vueblog icon-github"></i></a>
       <a href="/admin/publish"><i class="vueblog icon-writefill"></i></a>
       <a @click="backTop"><i class="vueblog icon-backtop"></i></a>
     </aside>
