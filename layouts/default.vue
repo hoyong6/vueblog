@@ -41,7 +41,7 @@
       <a @click="backTop"><i class="vueblog icon-backtop"></i></a>
     </aside>
     <footer class="blog-footer container">
-      <p>Powered by <a href="" target="_blank">VueBlog</a></p>
+      <p>Powered by <a href="" target="_blank">hyHero</a></p>
     </footer>
   </div>
 </template>

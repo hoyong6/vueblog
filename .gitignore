@@ -23,3 +23,5 @@ build
 .idea/
 
 /server/config/index.js
+
+/build
