@@ -12,11 +12,11 @@ const domain = config.app.domain ? config.app.domain : `http://${config.app.host
 export const login = async(ctx, next) => {
   let { username, password } = ctx.request.body
   password = md5(password)
-  try {
-    let user = await User.findOne({username: username, password: password}).exec()
-    let secret = config.jwt.secret
+  try { // try catch 一下
+    let user = await User.findOne({username: username, password: password}).exec() // 接下来可能写一波的注释解析一下这段代码
+    let secret = config.jwt.secret // jwt 类似的一个秘钥
     let expiresIn = config.jwt.expiresIn
-    let token = jwt.sign({ username: user.username, userID: user._id }, secret)
+    let token = jwt.sign({ username: user.username, userID: user._id }, secret)  // token 需要有效载荷 和 秘钥
     ctx.cookies.set('token', token)
     ctx.body = {
       success: true,
@@ -32,15 +32,15 @@ export const login = async(ctx, next) => {
   }
 }
 
-export const logout = (ctx, next) => {
-  ctx.cookies.set('token', null)
+export const logout = (ctx, next) => { // 登出服务
+  ctx.cookies.set('token', null) // 'token' 置空
   ctx.body = {
     success: true,
     data: {}
   }
 }
 
-export const getUserInfo = async(ctx, next) => {
+export const getUserInfo = async(ctx, next) => { // 这个接口写了但是好像没有调用
   let { username } = ctx.params
   let avatarUrl = domain + '/public/' + config.user.avatar
   if(!username){

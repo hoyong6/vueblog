@@ -137,7 +137,10 @@ export default {
   // 管理员登录
   async LOGIN({ commit, state, getters }, user) {
     const { data } = await axios.post(`${getters.baseUrl}/login`, user)
-    commit('SET_TOKEN', data.data.token)
+    // if(data.success){ // 如果有token才进行传输
+    //   commit('SET_TOKEN', data.data.token)
+    // }
+    commit('SET_TOKEN', data.data.token) // 正常来说这个位置的登录需要进行一步判活才能进行下一步
     return data
   },
 
