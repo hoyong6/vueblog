@@ -41,8 +41,8 @@ html {
   line-height: 1.618;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", sans-serif;
   color: #24292e;
-  background: url('/static/indexBgc.jpg')content-box;
-  background-size: 1439px auto;
+  background: url('/static/indexBgc.jpg')no-repeat center;
+  background-size: 100% 100%;
 }
 
 body {
