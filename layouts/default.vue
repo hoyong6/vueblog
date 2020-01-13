@@ -212,8 +212,6 @@ export default {
   }
   .blog-body {
     position: relative;
-    padding-left: 15px;
-    padding-right: 15px;
     margin-bottom: 50px;
     margin-top: 100px;
   }
@@ -249,10 +247,10 @@ export default {
     font-size: 12px;
     p {
       line-height: 50px;
-      color: #999;
+      color: #fff;
     }
     a {
-      color: $link-color;
+      color: #fff;
     }
   }
 }

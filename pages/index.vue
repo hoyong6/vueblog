@@ -1,8 +1,13 @@
 <template>
-  <div class="index container" v-scroll="onLoad">
-    <top-list :articles="$store.state.articles" />
-    <p v-if="isLoading" class="load-tip">加载中...</p>
-    <p v-if="noMore" class="load-tip">没有更多文章了</p>
+  <div>
+    <video class="videoClass" autoplay loop="loop" preload="auto" src="/static/topBgc.mp4" poster="/static/topBgc.jpg"></video>
+    <div class="indexBgc">
+      <div class="index container" v-scroll="onLoad">
+        <top-list :articles="$store.state.articles" />
+        <p v-if="isLoading" class="load-tip">加载中...</p>
+        <p v-if="noMore" class="load-tip">没有更多文章了</p>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -58,3 +63,10 @@ export default {
 }
 
 </script>
+
+<style lang="scss">
+  .videoClass {
+    width: 100%;
+    margin-top: -100px;
+  }
+</style>
