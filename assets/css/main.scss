@@ -41,8 +41,6 @@ html {
   line-height: 1.618;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", sans-serif;
   color: #24292e;
-  background: url('/static/indexBgc.jpg')no-repeat center;
-  background-size: 100% 100%;
 }
 
 body {
@@ -129,7 +127,9 @@ button {
 }
 
 .container {
-  max-width: 770px;
+  padding: 0 50px;
+  background-color: #fff;
+  max-width: 870px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -147,14 +147,12 @@ button {
 
 .markdown-body {
   line-height: 1.618 !important;
-  color: #FFA500!important;
 }
 
 code {
   white-space: pre-wrap !important;
   word-break: break-all !important;
   word-wrap: break-word !important;
-  color: #333;
 }
 
 /* .page-enter-active,
@@ -271,7 +269,6 @@ code {
 .detail {
   .detail-title {
     margin-bottom: 15px;
-    color: #fff;
   }
   .detail-meta {
     font-size: 14px;

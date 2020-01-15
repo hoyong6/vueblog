@@ -24,7 +24,7 @@ export default {
 </script>
 <style lang="scss">
 $link-color: #42B983;
-$font-color: #fff;
+$font-color: #24292e;
 .list {
   ul {
     list-style: none;
@@ -43,7 +43,7 @@ $font-color: #fff;
     }
     .article-body {
       margin: 10px 0;
-      color: #fff;
+      color: #666;
       word-wrap: break-word;
     }
   }
