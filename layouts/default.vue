@@ -1,5 +1,6 @@
 <template>
   <div class="blog">
+    <canvasBgc></canvasBgc>
     <div class="header-wraper">
       <header class="blog-header">
         <h1 class="header-title"><a href="/">{{ $store.state.user.nickname }}</a></h1>
@@ -46,6 +47,7 @@
   </div>
 </template>
 <script>
+import canvasBgc from "./canvasBgc.vue";
 export default {
   data() {
     return {
@@ -91,6 +93,9 @@ export default {
         }
       ]
     }
+  },
+  components: {
+    canvasBgc
   },
   methods: {
     search() {
@@ -212,7 +217,6 @@ export default {
   }
   .blog-body {
     position: relative;
-    margin-bottom: 50px;
     margin-top: 100px;
   }
   .blog-aside {
