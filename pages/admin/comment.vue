@@ -20,7 +20,7 @@ export default {
   middleware: 'auth',
   data() {
     return {
-      comment:{},
+      comment: {},
       comments: [],
       isShow: false,
       replyContent: ''
@@ -38,12 +38,12 @@ export default {
   },
   methods: {
     delBtn(comment) {
-       this.$store.dispatch('DELETE_COMMENT', comment.id).then((data) => {
-        if(data.success) {
-         this.$refs.tip.openTip('评论已删除')
-         this.$store.dispatch('COMMENTS').then((data) => {
-           this.comments = data.data
-         })
+      this.$store.dispatch('DELETE_COMMENT', comment.id).then((data) => {
+        if (data.success) {
+          this.$refs.tip.openTip('评论已删除')
+          this.$store.dispatch('COMMENTS').then((data) => {
+            this.comments = data.data
+          })
         }
       })
     },

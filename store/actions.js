@@ -4,7 +4,8 @@ export default {
   async nuxtServerInit({ dispatch, commit, getters }, { req, res }) {
     if (req.headers.cookie) {
       // 解析cookie
-      let cookie = req.headers.cookie, cookieObj = {}, cookieArr = [], key = '', value = '';
+      // eslint-disable-next-line one-var
+      let cookie = req.headers.cookie, cookieObj = {}, cookieArr = [], key = '', value = ''
       cookie = cookie.split(';')
       for (let i = 0; i < cookie.length; i++) {
         cookieArr = cookie[i].trim().split('=')
@@ -12,10 +13,10 @@ export default {
         value = cookieArr[1]
         cookieObj[key] = value
       }
-      if(cookieObj.token) {
+      if (cookieObj.token) {
         commit('SET_TOKEN', cookieObj.token)
       }
-      if(cookieObj.githubToken){
+      if (cookieObj.githubToken) {
         commit('SET_GITHUB_TOKEN', cookieObj.githubToken)
       }
     }
@@ -44,14 +45,13 @@ export default {
 
   async TAGS({ commit, state, getters }, id = '') {
     const { data } = await axios.get(`${getters.baseUrl}/tags/${id}`)
-    if(id) {
+    if (id) {
       commit('SET_TAG_ARTICLES', data)
-    }else{
+    } else {
       commit('SET_TAGS', data)
     }
     return data
   },
-
 
   // 文章相关操作
   async ARTICLES({ commit, state, getters }, page = 1, limit = 15) {
@@ -150,4 +150,3 @@ export default {
     return data
   }
 }
-

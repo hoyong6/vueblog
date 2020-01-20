@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       options: {},
-      isLogin: this.$store.state.token ? true : false,
+      isLogin: !!this.$store.state.token,
       isConfig: this.$store.getters.isGithubConfig
     }
   },

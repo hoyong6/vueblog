@@ -15,7 +15,7 @@ export default () => {
       tagArticles: [], // 标签下的文章列表
       searchArticles: [],
       archives: [],
-      githubApi:{
+      githubApi: {
         userInfo: 'https://api.github.com/user?access_token='
       }
     },

@@ -41,7 +41,7 @@ export default {
   methods: {
     updateInfo() {
       this.$store.dispatch('UPDATE_ADMIN', this.user).then((data) => {
-        if(data.success) {
+        if (data.success) {
           this.$refs.tip.openTip('信息修改完成')
         }
       })
@@ -55,11 +55,11 @@ export default {
         return false
       }
       this.$store.dispatch('UPDATE_ADMIN', { oldPassword: this.oldPassword, newPassword: this.newPassword }).then((data) => {
-        if(data.success) {
+        if (data.success) {
           this.$refs.tip.openTip('密码重置完成')
           // clear token
           this.$store.dispatch('LOGOUT').then(ret => {
-            if(ret.success) {
+            if (ret.success) {
               this.$store.state.token = ''
               this.$router.push('/login')
             }

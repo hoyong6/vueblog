@@ -1,6 +1,8 @@
 <template>
   <div>
-    <video class="videoClass" autoplay loop="loop" preload="auto" src="/static/topBgc.mp4" poster="/static/topBgc.jpg"></video>
+    <div class="containerTopBox">
+      <video class="videoClass" autoplay loop="loop" preload="auto" src="/static/topBgc.mp4" poster="/static/topBgc.jpg"></video>
+    </div>
     <div class="indexBgc">
       <div class="index container" v-scroll="onLoad">
         <top-list :articles="$store.state.articles" />
@@ -45,17 +47,17 @@ export default {
   methods: {
     async onLoad() {
       // 没有正在加载中
-      if(!this.isLoading) {
-        if(this.$store.state.articles.length < this.$store.state.total) {
+      if (!this.isLoading) {
+        if (this.$store.state.articles.length < this.$store.state.total) {
           this.isLoading = true
           this.page++
           await this.$store.dispatch('ARTICLES', this.page)
           this.isLoading = false
-        }else{
+        } else {
           this.noMore = true
           return false
         }
-      }else{
+      } else {
         return false
       }
     }
@@ -66,7 +68,10 @@ export default {
 
 <style lang="scss">
   .videoClass {
-    width: 100%;
+    width: 870px;
     margin-top: -100px;
+  }
+  .containerTopBox{
+    text-align: center;
   }
 </style>

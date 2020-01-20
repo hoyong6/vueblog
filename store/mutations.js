@@ -2,7 +2,7 @@ export default {
   SET_TOKEN(state, token) {
     state.token = token
   },
-  SET_GITHUB_TOKEN(state, token){
+  SET_GITHUB_TOKEN(state, token) {
     state.githubToken = token
   },
   SET_USER(state, data) {

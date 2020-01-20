@@ -14,7 +14,7 @@
 <script>
 export default {
   async fetch({ store }) {
-    if(!store.state.archives.length) {
+    if (!store.state.archives.length) {
       await store.dispatch('ARCHIVES')
     }
   },

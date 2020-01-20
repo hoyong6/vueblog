@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       disabled: false,
-      isGithubLogin: this.$store.state.githubToken ? true : false,
+      isGithubLogin: !!this.$store.state.githubToken,
       isSMTPConfig: this.$store.getters.isSMTPConfig,
       tipMessage: '欢迎留言交流',
       commentContent: '',
@@ -108,7 +108,7 @@ export default {
             this.comments.push(data.data[0])
 
             // 回复邮件通知
-            if(this.isSMTPConfig && this.replyId) {
+            if (this.isSMTPConfig && this.replyId) {
               let lastIndex = this.realComments.length - 1
               let lastItem = this.realComments[lastIndex]
               this.sendEmail({
@@ -139,8 +139,8 @@ export default {
         this.$refs.commentTextarea.focus()
       }
     },
-    sendEmail(params){
-      this.$store.dispatch('SEND_EMAIL',params)
+    sendEmail(params) {
+      this.$store.dispatch('SEND_EMAIL', params)
     }
   }
 }
