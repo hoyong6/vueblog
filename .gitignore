@@ -19,7 +19,7 @@ public/*
 NOTE.md
 
 # server
-./server/config/*
+server/config/index.js
 
 .idea/
 
