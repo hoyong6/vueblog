@@ -3,7 +3,7 @@
     <canvas></canvas>
     <div class="header-wraper">
       <header class="blog-header">
-        <h1 class="header-title"><a href="/">{{ $store.state.user.nickname }}</a> 这是属于hero的博客小站 ^(*￣(oo)￣)^</h1>
+        <h1 class="header-title"><a href="/">{{ $store.state.user.nickname }}</a>  这是属于hero的博客小站 ^(*￣(oo)￣)^</h1>
           <nav class="header-nav" ref="headerNav">
             <div class="nav-avatar">
               <img :src="$store.state.user.avatar" alt="">
