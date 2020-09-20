@@ -20,7 +20,7 @@
 <script>
 export default {
   middleware: 'auth',
-  data() {
+  data () {
     return {
       oldPassword: '',
       newPassword: '',
@@ -28,25 +28,25 @@ export default {
       user: {}
     }
   },
-  mounted() {
+  mounted () {
     this.$store.dispatch('ADMIN_INFO').then((data) => {
       this.user = data.data
     })
   },
-  head() {
+  head () {
     return {
       title: '修改信息 - ' + this.$store.state.user.nickname
     }
   },
   methods: {
-    updateInfo() {
+    updateInfo () {
       this.$store.dispatch('UPDATE_ADMIN', this.user).then((data) => {
         if (data.success) {
           this.$refs.tip.openTip('信息修改完成')
         }
       })
     },
-    updatePassword() {
+    updatePassword () {
       if (!this.oldPassword || !this.newPassword || !this.vertifyPassword) {
         return false
       }

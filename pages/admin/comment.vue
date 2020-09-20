@@ -18,7 +18,7 @@
 <script>
 export default {
   middleware: 'auth',
-  data() {
+  data () {
     return {
       comment: {},
       comments: [],
@@ -26,18 +26,18 @@ export default {
       replyContent: ''
     }
   },
-  mounted() {
+  mounted () {
     this.$store.dispatch('COMMENTS').then((data) => {
       this.comments = data.data
     })
   },
-  head() {
+  head () {
     return {
       title: '评论列表 - ' + this.$store.state.user.nickname
     }
   },
   methods: {
-    delBtn(comment) {
+    delBtn (comment) {
       this.$store.dispatch('DELETE_COMMENT', comment.id).then((data) => {
         if (data.success) {
           this.$refs.tip.openTip('评论已删除')
@@ -47,7 +47,7 @@ export default {
         }
       })
     },
-    showComment(comment) {
+    showComment (comment) {
       this.comment = comment
       this.isShow = true
     }

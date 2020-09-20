@@ -17,7 +17,7 @@ module.exports = {
   loading: { color: '#42B983' },
   build: {
     vendor: ['axios'],
-    extend(config, ctx) {
+    extend (config, ctx) {
       if (ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',

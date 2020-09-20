@@ -13,12 +13,12 @@
 </template>
 <script>
 export default {
-  async fetch({ store }) {
+  async fetch ({ store }) {
     if (!store.state.archives.length) {
       await store.dispatch('ARCHIVES')
     }
   },
-  head() {
+  head () {
     return {
       title: '归档 - ' + this.$store.state.user.nickname
     }

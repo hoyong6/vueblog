@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import MarkdownIt from 'markdown-it'
 
-export function formatDate(date, fmt) {
+export function formatDate (date, fmt) {
   let newDate = new Date(date)
   if (/(y+)/.test(fmt)) {
     fmt = fmt.replace(RegExp.$1, (newDate.getFullYear() + '').substr(4 - RegExp.$1.length))
@@ -22,11 +22,11 @@ export function formatDate(date, fmt) {
   return fmt
 }
 
-function padLeftZero(str) {
+function padLeftZero (str) {
   return ('00' + str).substr(str.length)
 }
 
-export function cutString(str, len) {
+export function cutString (str, len) {
   if (str !== null) {
     let md = new MarkdownIt()
     str = md.render(str)

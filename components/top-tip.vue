@@ -8,7 +8,7 @@
 <script>
 export default {
   name: 'top-tip',
-  data() {
+  data () {
     return {
       tip: '',
       isOpen: false
@@ -16,7 +16,7 @@ export default {
   },
 
   methods: {
-    openTip(tip) {
+    openTip (tip) {
       this.tip = tip
       this.isOpen = true
       let timer = setTimeout(() => {

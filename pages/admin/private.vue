@@ -14,23 +14,23 @@
 <script>
 export default {
   middleware: 'auth',
-  data() {
+  data () {
     return {
       articles: []
     }
   },
-  mounted() {
+  mounted () {
     this.$store.dispatch('PRIVATE_ARTICLES').then((data) => {
       this.articles = data.data
     })
   },
-  head() {
+  head () {
     return {
       title: '草稿箱 - ' + this.$store.state.user.nickname
     }
   },
   methods: {
-    del(id) {
+    del (id) {
       this.$store.dispatch('DELETE_ARTICLE', id).then((data) => {
         if (data.success) {
           this.$refs.tip.openTip('草稿删除完成')
@@ -40,7 +40,7 @@ export default {
         }
       })
     },
-    edit(id) {
+    edit (id) {
       this.$router.push(`/admin/publish/${id}`)
     }
   }

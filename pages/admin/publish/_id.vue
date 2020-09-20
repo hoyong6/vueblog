@@ -26,7 +26,7 @@
 <script>
 export default {
   middleware: 'auth',
-  data() {
+  data () {
     return {
       upload: {
         url: this.$store.getters.baseUrl + '/upload',
@@ -45,16 +45,16 @@ export default {
     }
   },
 
-  head() {
+  head () {
     return {
       title: '发布文章 - ' + this.$store.state.user.nickname
     }
   },
-  mounted() {
+  mounted () {
     if (process.browser) {
       this.options = {
         linkify: true,
-        highlight(str, lang = 'javascript') {
+        highlight (str, lang = 'javascript') {
           if (require('highlight.js').getLanguage(lang)) {
             try {
               return require('highlight.js').highlight(lang, str).value
@@ -75,17 +75,17 @@ export default {
     }
   },
   methods: {
-    chooseTag(tag) {
+    chooseTag (tag) {
       if (this.article.tags.findIndex(item => item.name === tag.name) > -1) {
         this.$refs.tip.openTip('标签已存在！')
         return
       }
       this.article.tags.push(tag)
     },
-    delTag(tag, index) {
+    delTag (tag, index) {
       this.article.tags.splice(index, 1)
     },
-    addTag() {
+    addTag () {
       if (this.tags.findIndex(item => item.name === this.tag) > -1) {
         // add tag
         this.tags.forEach((item) => {
@@ -105,7 +105,7 @@ export default {
         })
       }
     },
-    publish(isPublish) {
+    publish (isPublish) {
       let tagsID = []
       let article = {}
       if (!this.article.title || !this.article.content) {
@@ -146,7 +146,7 @@ export default {
         })
       }
     },
-    save(val) {
+    save (val) {
       if (val === true) {
         // ctrl + s save article
         this.publish(false)

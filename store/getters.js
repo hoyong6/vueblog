@@ -1,6 +1,6 @@
 import globalConfig from '../server/config'
 export default {
-  baseUrl() {
+  baseUrl () {
     let host
     if (process.env.NODE_ENV === 'production' && globalConfig.app.domain) {
       host = `${globalConfig.app.domain}/${globalConfig.app.routerBaseApi}`
@@ -9,18 +9,18 @@ export default {
     }
     return host
   },
-  routerBaseApi() {
+  routerBaseApi () {
     const routerBaseApi = globalConfig.app.routerBaseApi
     return routerBaseApi
   },
-  isGithubConfig() {
+  isGithubConfig () {
     if (globalConfig.githubConfig.githubClient && globalConfig.githubConfig.githubSecret) {
       return true
     } else {
       return false
     }
   },
-  isSMTPConfig() {
+  isSMTPConfig () {
     if (globalConfig.emailConfig.user && globalConfig.emailConfig.pass) {
       return true
     } else {

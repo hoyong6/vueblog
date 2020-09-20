@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="containerTopBox">
-      <video class="videoClass" autoplay loop="loop" preload="auto" src="/public/topBgc.mp4" poster="/static/topBgc.jpg"></video>
+      <img class="videoClass" src="../static/light.gif" alt="闪电">
     </div>
     <div class="indexBgc">
       <div class="index container" v-scroll="onLoad">
@@ -14,26 +14,26 @@
 </template>
 <script>
 export default {
-  async fetch({ store, route }) {
+  async fetch ({ store, route }) {
     if (!store.state.articles.length) {
       await store.dispatch('ARTICLES', 1)
     }
   },
-  data() {
+  data () {
     return {
       page: 1,
       isLoading: false,
       noMore: false
     }
   },
-  head() {
+  head () {
     return {
       title: this.$store.state.user.nickname
     }
   },
   directives: {
     scroll: {
-      bind(el, binding) {
+      bind (el, binding) {
         window.addEventListener('scroll', () => {
           let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
           if (scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
@@ -45,7 +45,7 @@ export default {
     }
   },
   methods: {
-    async onLoad() {
+    async onLoad () {
       // 没有正在加载中
       if (!this.isLoading) {
         if (this.$store.state.articles.length < this.$store.state.total) {
@@ -69,7 +69,7 @@ export default {
 <style lang="scss">
   .videoClass {
     width: 870px;
-    margin-top: -100px;
+    margin: -100px auto 0;
   }
   .containerTopBox{
     text-align: center;

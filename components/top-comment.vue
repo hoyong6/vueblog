@@ -2,7 +2,7 @@
   <div class="top-comment">
     <div class="comment-list">
       <ul>
-        <li v-for="(item,index) in realComments" :key="item.id">
+        <li v-for="(item) in realComments" :key="item.id">
           <div class="list-header clearfix">
             <a :href="`https://github.com/${item.user.username}`" class="header-avatar">
               <img :src="item.user.avatar" :alt="item.user.username" width="30px" height="30px">
@@ -51,7 +51,7 @@ export default {
       type: String
     }
   },
-  data() {
+  data () {
     return {
       disabled: false,
       isGithubLogin: !!this.$store.state.githubToken,
@@ -65,7 +65,7 @@ export default {
     }
   },
   computed: {
-    realComments() {
+    realComments () {
       // 把replayId替换成用户信息
       let list = this.comments
       for (let i = 0; i < list.length; i++) {
@@ -81,7 +81,7 @@ export default {
       return list
     }
   },
-  mounted() {
+  mounted () {
     if (this.isGithubLogin) {
       let u = this.$store.state.githubApi.userInfo + this.$store.state.githubToken
       axios.get(u).then(data => {
@@ -90,11 +90,11 @@ export default {
     }
   },
   methods: {
-    githubLogin() {
+    githubLogin () {
       this.tipMessage = '请稍等...'
       window.location.href = `${this.$store.getters.baseUrl}/oauth/github/${this.articleId}`
     },
-    submitComment() {
+    submitComment () {
       if (!this.commentContent) { return false }
       this.disabled = true
       this.$store.dispatch('CREATE_COMMENT', {
@@ -130,7 +130,7 @@ export default {
         }
       })
     },
-    replyComment(username, id) {
+    replyComment (username, id) {
       if (!this.isGithubLogin) {
         this.githubLogin()
       } else {
@@ -139,7 +139,7 @@ export default {
         this.$refs.commentTextarea.focus()
       }
     },
-    sendEmail(params) {
+    sendEmail (params) {
       this.$store.dispatch('SEND_EMAIL', params)
     }
   }

@@ -14,11 +14,11 @@
 </template>
 <script>
 export default {
-  async fetch({ store, route }) {
+  async fetch ({ store, route }) {
     let id = route.params.id || ''
     await store.dispatch('TAGS', id)
   },
-  head() {
+  head () {
     return {
       title: '标签 - ' + this.$store.state.user.nickname
     }

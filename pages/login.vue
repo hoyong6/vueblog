@@ -8,18 +8,18 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       user: {}
     }
   },
-  head() {
+  head () {
     return {
       title: '登录 - ' + this.$store.state.user.nickname
     }
   },
   methods: {
-    login() {
+    login () {
       if (!this.user.username || !this.user.password) {
         return false
       }

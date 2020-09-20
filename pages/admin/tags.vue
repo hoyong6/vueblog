@@ -18,25 +18,25 @@
 <script>
 export default {
   middleware: 'auth',
-  data() {
+  data () {
     return {
       tag: {},
       tags: [],
       isEdit: false
     }
   },
-  mounted() {
+  mounted () {
     this.$store.dispatch('TAGS').then((data) => {
       this.tags = data.data
     })
   },
-  head() {
+  head () {
     return {
       title: '修改标签 - ' + this.$store.state.user.nickname
     }
   },
   methods: {
-    delTag(tag) {
+    delTag (tag) {
       this.$store.dispatch('DELETE_TAG', tag.id).then((data) => {
         // console.log(data)
         if (data.success) {
@@ -47,11 +47,11 @@ export default {
         }
       })
     },
-    editTag(tag) {
+    editTag (tag) {
       this.isEdit = true
       this.tag = tag
     },
-    edit() {
+    edit () {
       this.isEdit = false
       this.$store.dispatch('UPDATE_TAG', this.tag).then((data) => {
         if (data.success) {

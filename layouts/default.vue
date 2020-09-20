@@ -48,7 +48,7 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       keyword: '',
       navStyle: {},
@@ -91,8 +91,8 @@ export default {
           name: '设置'
         }
       ],
-      STAR_SIZE: 3,  // 星星类型，暂时没有想出来是干什么的
-      STAR_MIN_SCALE: 0.2,  // 星体最小刻度
+      STAR_SIZE: 3, // 星星类型，暂时没有想出来是干什么的
+      STAR_MIN_SCALE: 0.2, // 星体最小刻度
       OVERFLOW_THRESHOLD: 50, // 溢出阈值，其实是出现位置
       scale: 1, // device pixel ratio   设备像素比设置为1
       width: null,
@@ -104,15 +104,15 @@ export default {
       touchInput: false
     }
   },
-  created() {
+  created () {
     if (process.browser) {
-      this.STAR_COUNT = (window.innerWidth + window.innerHeight) / 8  // 星光计数
+      this.STAR_COUNT = (window.innerWidth + window.innerHeight) / 8 // 星光计数
       this.canvas = document.querySelector('canvas')
       this.context = this.canvas.getContext('2d')
-      window.onresize = this.resize  // 调整大小
+      window.onresize = this.resize // 调整大小
       document.onmouseleave = this.onMouseLeave // 移动事件
-      this.generate()   // 生成
-      this.resize()  // 改变大小
+      this.generate() // 生成
+      this.resize() // 改变大小
       this.step() // 步骤
       this.canvas.onmousemove = (event) => { // 鼠标移动,其实手势代码已经打通了，不生效的原因是z-index的问题。
         this.touchInput = false
@@ -132,7 +132,7 @@ export default {
     }
   },
   methods: {
-    search() {
+    search () {
       let keyword = encodeURIComponent(this.keyword)
       if (!keyword) { return false }
       this.$router.push({
@@ -142,7 +142,7 @@ export default {
         }
       })
     },
-    logout() {
+    logout () {
       this.$store.dispatch('LOGOUT').then(data => {
         if (data.success) {
           this.$store.state.token = ''
@@ -150,31 +150,31 @@ export default {
         }
       })
     },
-    backTop() {
+    backTop () {
       document.documentElement.scrollTop = 0
       document.body.scrollTop = 0
     },
-    showMenu() {
+    showMenu () {
       if (this.$refs.headerNav.style.transform) {
         this.$refs.headerNav.style.transform = ''
       } else {
         this.$refs.headerNav.style.transform = 'translateX(0)'
       }
     },
-    generate() { // 生成
+    generate () { // 生成
       for (let i = 0; i < this.STAR_COUNT; i++) { // 根据星光计数而随机生成数量
         this.stars.push({
           x: 0,
           y: 0,
-          z: this.STAR_MIN_SCALE + Math.random() * (1 - this.STAR_MIN_SCALE)   // 0.2 + Math.random() * (1 - 0.2) 这个z 我感觉像随机生成的速度
+          z: this.STAR_MIN_SCALE + Math.random() * (1 - this.STAR_MIN_SCALE) // 0.2 + Math.random() * (1 - 0.2) 这个z 我感觉像随机生成的速度
         })
       }
     },
-    placeStar(star) { // 星光的位置随机
+    placeStar (star) { // 星光的位置随机
       star.x = Math.random() * this.width
       star.y = Math.random() * this.height
     },
-    recycleStar(star) { // 星光回收 绝对不止回收这么简单。
+    recycleStar (star) { // 星光回收 绝对不止回收这么简单。
       let direction = 'z'
       let vx = Math.abs(this.velocity.x) // x速度取绝对值都是正值
       let vy = Math.abs(this.velocity.y) // y速度取绝对值都是正值
@@ -192,7 +192,7 @@ export default {
         }
       }
       star.z = this.STAR_MIN_SCALE + Math.random() * (1 - this.STAR_MIN_SCALE)
-      if (direction === 'z') {  // direction 方向  实际上是在判断方向，出多少 加多少，低速确实是 均被z轴吃掉了，z轴吃掉后再生
+      if (direction === 'z') { // direction 方向  实际上是在判断方向，出多少 加多少，低速确实是 均被z轴吃掉了，z轴吃掉后再生
         star.z = 0.1
         star.x = Math.random() * this.width
         star.y = Math.random() * this.height
@@ -210,17 +210,17 @@ export default {
         star.y = this.height + this.OVERFLOW_THRESHOLD
       }
     },
-    resize() { // 调整大小
+    resize () { // 调整大小
       if (process.browser) {
-        this.scale = window.devicePixelRatio || 1  // 判断是否存在像素比，没有那就是1
-        this.width = window.innerWidth * this.scale  // 获取窗口的高度与宽度(不包含工具条与滚动条
+        this.scale = window.devicePixelRatio || 1 // 判断是否存在像素比，没有那就是1
+        this.width = window.innerWidth * this.scale // 获取窗口的高度与宽度(不包含工具条与滚动条
         this.height = window.innerHeight * this.scale
         this.canvas.width = this.width
         this.canvas.height = this.height
         this.stars.forEach(this.placeStar)
       }
     },
-    step() { // 步骤
+    step () { // 步骤
       this.context.clearRect(0, 0, this.width, this.height) // 首先清场
 
       this.update()
@@ -229,9 +229,9 @@ export default {
       requestAnimationFrame(this.step) // 告诉浏览器 —— 你希望执行一个动画，并且要求浏览器在下次重绘之前调用制定的回调函数更新动画。
       // 该方法需要传入一个回调函数作为参数，该回调函数会在浏览器下一次重绘前执行， 回调函数执行次数通常是每秒60次  是60帧的原因嘛
     },
-    update() { // velocity 速度
-      this.velocity.tx *= 0.96  // 基底速度* .96, 目测这基底速度算是报废了，永远是0
-      this.velocity.ty *= 0.96  // 基底速度* .96
+    update () { // velocity 速度
+      this.velocity.tx *= 0.96 // 基底速度* .96, 目测这基底速度算是报废了，永远是0
+      this.velocity.ty *= 0.96 // 基底速度* .96
 
       this.velocity.x += (this.velocity.tx - this.velocity.x) * 0.8 // 单方向速度 tx， - 位置 x.
       this.velocity.y += (this.velocity.ty - this.velocity.y) * 0.8 // 单方向速度 ty， - 位置 y.
@@ -246,14 +246,14 @@ export default {
 
         // recycle when out of bounds 出界时回收
         if (star.x < -this.OVERFLOW_THRESHOLD || star.x > this.width + this.OVERFLOW_THRESHOLD || star.y < -this.OVERFLOW_THRESHOLD || star.y > this.height + this.OVERFLOW_THRESHOLD) {
-          this.recycleStar(star)  // 回收
+          this.recycleStar(star) // 回收
         }
       })
     },
-    render() { // 渲染
+    render () { // 渲染
       this.stars.forEach((star) => {
         this.context.beginPath() // 重置绘画路径的意思
-        this.context.lineCap = 'round'  // 向线条的每个末端添加圆形线帽, 被用作绘制圆形
+        this.context.lineCap = 'round' // 向线条的每个末端添加圆形线帽, 被用作绘制圆形
         this.context.lineWidth = this.STAR_SIZE * star.z * this.scale // lineWidth 属性设置或返回当前线条的宽度，以像素计
         this.context.strokeStyle = 'rgba(255,255,255,' + (0.5 + 0.5 * Math.random()) + ')' // 属性设置或返回用于笔触的颜色、渐变或模式
 
@@ -272,7 +272,7 @@ export default {
         this.context.stroke() // 是 Canvas 2D API 使用非零环绕规则，根据当前的画线样式，绘制当前或已经存在的路径的方法
       })
     },
-    movePointer(x, y) { // 移动指针， 由于鼠标移动或者 touch 触摸
+    movePointer (x, y) { // 移动指针， 由于鼠标移动或者 touch 触摸
       if (typeof this.pointerX === 'number' && typeof this.pointerY === 'number') {
         let ox = x - this.pointerX
         let oy = y - this.pointerY

@@ -30,7 +30,7 @@
 <script>
 import { cutString } from '~/plugins/filters'
 export default {
-  async asyncData({ store, route, error }) {
+  async asyncData ({ store, route, error }) {
     let id = route.params.id || ''
     const { data } = await store.dispatch('ARTICLE_DETAIL', id)
     if (!id) {
@@ -44,7 +44,7 @@ export default {
       article: data || {}
     }
   },
-  head() {
+  head () {
     return {
       title: this.article.title + '-' + this.$store.state.user.nickname,
       meta: [
@@ -52,7 +52,7 @@ export default {
       ]
     }
   },
-  data() {
+  data () {
     return {
       options: {},
       isLogin: !!this.$store.state.token,
@@ -60,11 +60,11 @@ export default {
     }
   },
 
-  mounted() {
+  mounted () {
     if (process.browser) {
       this.options = {
         linkify: true,
-        highlight(str, lang = 'javascript') {
+        highlight (str, lang = 'javascript') {
           if (require('highlight.js').getLanguage(lang)) {
             try {
               return require('highlight.js').highlight(lang, str).value
@@ -77,7 +77,7 @@ export default {
   },
 
   methods: {
-    del(id) {
+    del (id) {
       this.$store.dispatch('DELETE_ARTICLE', id).then(data => {
         if (data.success) {
           this.$refs.tip.openTip('文章已删除')
@@ -85,7 +85,7 @@ export default {
         }
       })
     },
-    edit(id) {
+    edit (id) {
       this.$router.push(`/admin/publish/${id}`)
     }
   }

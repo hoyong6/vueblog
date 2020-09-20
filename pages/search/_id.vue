@@ -18,22 +18,22 @@
 </template>
 <script>
 export default {
-  async fetch({ store, route }) {
+  async fetch ({ store, route }) {
     let id = route.params.id || ''
     await store.dispatch('SEARCH', id)
   },
-  head() {
+  head () {
     return {
       title: '搜索 - ' + this.$store.state.user.nickname
     }
   },
-  data() {
+  data () {
     return {
       keyword: ''
     }
   },
   methods: {
-    search() {
+    search () {
       let keyword = encodeURIComponent(this.keyword) || encodeURIComponent(this.$route.params.id)
       if (!keyword) { return false }
       this.$router.push({
