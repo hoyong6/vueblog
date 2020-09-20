@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="containerTopBox">
-      <video class="videoClass" autoplay loop="loop" preload="auto" src="/static/topBgc.mp4" poster="/static/topBgc.jpg"></video>
+      <video class="videoClass" autoplay loop="loop" preload="auto" src="/public/topBgc.mp4" poster="/static/topBgc.jpg"></video>
     </div>
     <div class="indexBgc">
       <div class="index container" v-scroll="onLoad">
