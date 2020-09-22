@@ -3,7 +3,7 @@
     <canvas></canvas>
     <div class="header-wraper">
       <header class="blog-header">
-        <h1 class="header-title"><a href="/">{{ $store.state.user.nickname }}</a> hyblog11 </h1>
+        <h1 class="header-title"><a href="/">{{ $store.state.user.nickname }}</a> hyblog111 </h1>
           <nav class="header-nav" ref="headerNav">
             <div class="nav-avatar">
               <img :src="$store.state.user.avatar" alt="">
