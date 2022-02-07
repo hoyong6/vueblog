@@ -3,7 +3,7 @@ export default {
     role: 'superAdmin',
     username: 'q',
     password: 'q',
-    email: 'qq22337383@gmail.com',
+    email: '822140753@qq.com',
     nickname: 'VueBlog',
     motto: 'Never too old to learn',
     avatar: 'avatar.png'
