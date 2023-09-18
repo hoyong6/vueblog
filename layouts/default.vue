@@ -3,7 +3,7 @@
     <canvas></canvas>
     <div class="header-wraper">
       <header class="blog-header">
-        <h1 class="header-title"><a href="/">{{ $store.state.user.nickname }}</a>blog99999999</h1>
+        <h1 class="header-title"><a href="/">{{ $store.state.user.nickname }}</a>hyhero6</h1>
           <nav class="header-nav" ref="headerNav">
             <div class="nav-avatar">
               <img :src="$store.state.user.avatar" alt="">
@@ -422,7 +422,7 @@ canvas {
   }
 }
 
-@media screen and(max-width: 768px) {
+@media screen and (max-width: 768px) {
   .blog {
     .blog-header {
       .header-menu {
