@@ -5,7 +5,7 @@ export default {
     if (process.env.NODE_ENV === 'production' && globalConfig.app.domain) {
       host = `${globalConfig.app.domain}/${globalConfig.app.routerBaseApi}`
     } else {
-      host = `http://${globalConfig.app.host}:${globalConfig.app.port}/${globalConfig.app.routerBaseApi}`
+      host = `https://${globalConfig.app.host}:${globalConfig.app.port}/${globalConfig.app.routerBaseApi}`
     }
     return host
   },
