@@ -28,7 +28,7 @@ export default {
     pass: ''
   },
   app: {
-    domain: '',
+    domain: 'https://www.hyvlog.fun/',
     host: '198.13.53.244',
     port: 3000,
     routerBaseApi: 'api'
