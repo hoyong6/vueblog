@@ -29,7 +29,8 @@ export default {
     pass: ""
   },
   app: {
-    domain: "https://www.akkc38.cn",
+    // domain: "https://www.akkc38.cn",
+    domain: "",
     host: "127.0.0.1",
     port: 3000,
     routerBaseApi: "api"
