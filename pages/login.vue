@@ -1,36 +1,48 @@
 <template>
   <div class="login container">
-    <input type="text" placeholder="用户名" autocomplete="off" v-model="user.username">
-    <input type="password" placeholder="密码" autocomplete="off" v-model="user.password" @keyup.enter="login">
+    <input
+      type="text"
+      placeholder="用户名"
+      autocomplete="off"
+      v-model="user.username"
+    />
+    <input
+      type="password"
+      placeholder="密码"
+      autocomplete="off"
+      v-model="user.password"
+      @keyup.enter="login"
+    />
     <button @click="login">登 录</button>
-    <top-tip ref="tip"/>
+    <top-tip ref="tip" />
   </div>
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
       user: {}
-    }
+    };
   },
-  head () {
+  head() {
     return {
-      title: '登录 - ' + this.$store.state.user.nickname
-    }
+      title: "登录 - " + this.$store.state.user.nickname
+    };
   },
   methods: {
-    login () {
+    login() {
       if (!this.user.username || !this.user.password) {
-        return false
+        return false;
       }
-      this.$store.dispatch('LOGIN', this.user).then(data => {
+      this.$store.dispatch("LOGIN", this.user).then(data => {
         if (data.success) {
-          this.$router.push('/admin/publish')
+          document.cookie = `token=${data.data.token}; path=/`;
+          this.$router.push("/admin/publish");
         } else {
-          this.$refs.tip.openTip('用户名或密码不正确')
+          this.$refs.tip.openTip("用户名或密码不正确");
         }
-      })
+      });
     }
   }
-}
+};
 </script>
