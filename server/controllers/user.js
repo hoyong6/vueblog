@@ -23,7 +23,13 @@ export const login = async (ctx, next) => {
     let secret = config.jwt.secret; // jwt 类似的一个秘钥
     let expiresIn = config.jwt.expiresIn;
     let token = jwt.sign({ username: user.username, userID: user._id }, secret); // token 需要有效载荷 和 秘钥
-    ctx.cookies.set("token", token);
+    ctx.cookies.set("token", token, {
+      httpOnly: true, // 防止客户端 JavaScript 访问 Cookie
+      // secure: true, // 仅在 HTTPS 连接中传输（需要 HTTPS 支持）
+      sameSite: "Strict", // 防止跨站请求伪造（CSRF）
+      maxAge: 3600 * 1000 // 设置 Cookie 的过期时间（以毫秒为单位）
+    });
+
     ctx.body = {
       success: true,
       data: {
