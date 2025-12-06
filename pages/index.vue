@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="containerTopBox">
-      <img class="videoClass" src="../static/light.gif" alt="闪电">
+      <canvas-bgc />
     </div>
     <div class="indexBgc">
       <div class="index container" v-scroll="onLoad">
@@ -13,7 +13,11 @@
   </div>
 </template>
 <script>
+import CanvasBgc from '~/components/canvasBgc.vue'
 export default {
+  components: {
+    CanvasBgc
+  },
   async fetch ({ store, route }) {
     if (!store.state.articles.length) {
       await store.dispatch('ARTICLES', 1)
@@ -67,11 +71,10 @@ export default {
 </script>
 
 <style lang="scss">
-  .videoClass {
-    width: 870px;
-    margin: -100px auto 0;
-  }
-  .containerTopBox{
-    text-align: center;
-  }
+.containerTopBox {
+  max-width: 980px;
+  margin: -40px auto 10px;
+  padding: 0 20px;
+  text-align: center;
+}
 </style>
